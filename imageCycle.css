@@ -1,7 +1,77 @@
-figure {
+/* --- 1. Global Setup --- */
+:root {
+    --bg-color: #eceff1;
+    --card-bg: #ffffff;
+    --text-main: #37474f;
+    --radius: 8px;
+    --shadow: 0 4px 20px rgba(0,0,0,0.08);
+    --accent-color: #264653; /* Spanish Dreams Theme Color */
+}
+
+body { 
+    font-family: 'Segoe UI', sans-serif; 
+    background-color: var(--bg-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-main);
+}
+
+/* --- 2. Box Container --- */
+.calculator-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 95%;
+    max-width: 650px; /* Slightly wider to fit the 600px image */
     text-align: center;
-    display: table; 
-    align-content: left;
-    width: 30%; /* demo; set some amount (px or %) if you can */
-    margin: 10px auto; /* not needed unless you want centered */
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+/* --- 3. Image & Figure Styling --- */
+figure {
+    margin: 20px 0;
+    padding: 0;
+    display: block;
+}
+
+#slide_image {
+    max-width: 100%;
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+figcaption {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+/* --- 4. Navigation --- */
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
+
+.back-menu {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+.back-menu:hover {
+    opacity: 0.7;
 }
