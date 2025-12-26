@@ -1,77 +1,65 @@
-/* --- 1. Global Setup --- */
-:root {
-    --bg-color: #eceff1;
-    --card-bg: #ffffff;
-    --text-main: #37474f;
-    --radius: 8px;
-    --shadow: 0 4px 20px rgba(0,0,0,0.08);
-    --accent-color: #264653; /* Spanish Dreams Theme Color */
-}
-
+/* --- Global Layout --- */
 body { 
-    font-family: 'Segoe UI', sans-serif; 
-    background-color: var(--bg-color);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+    background-color: #eceff1;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: var(--text-main);
 }
 
-/* --- 2. Box Container --- */
+/* --- The Box (Card) --- */
 .calculator-card {
-    background: var(--card-bg);
-    padding: 30px;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    width: 95%;
-    max-width: 650px; /* Slightly wider to fit the 600px image */
+    background: #ffffff;
+    padding: 25px; /* Slightly reduced padding */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 650px; 
     text-align: center;
+    border: 1px solid #ddd;
 }
 
 h1 {
     margin-top: 0;
-    font-size: 1.5rem;
-    color: var(--accent-color);
+    color: #37474f;
+    font-size: 1.4rem; /* Reduced from 1.8rem */
+    letter-spacing: 0.5px;
 }
 
-/* --- 3. Image & Figure Styling --- */
+/* --- The Slideshow Container --- */
 figure {
-    margin: 20px 0;
+    margin: 15px 0 0 0;
     padding: 0;
-    display: block;
 }
 
+/* --- Fixed Image Sizing --- */
 #slide_image {
-    max-width: 100%;
-    height: auto; /* Maintains aspect ratio */
+    width: 100%;       /* Responsive width */
+    max-width: 600px;  /* Cap at 600px */
+    height: 400px;     /* Fixed height for uniformity */
+    object-fit: cover; /* Prevents squishing */
     border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: block;
+    margin: 0 auto;
+    background-color: #f8f9fa;
 }
 
-figcaption {
-    margin-top: 15px;
+/* --- Caption Styling --- */
+#slide_text {
+    margin-top: 12px;
     font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--text-main);
+    font-size: 1rem; /* Reduced from 1.25rem */
+    color: #455a64;
+    min-height: 1.4em;
 }
 
-/* --- 4. Navigation --- */
-hr {
-    border: 0;
-    border-top: 1px solid #eee;
-    margin: 20px 0;
-}
-
+/* --- Footer Link (If you add one) --- */
 .back-menu {
-    display: inline-block;
+    font-size: 0.85rem;
+    color: #78909c;
     text-decoration: none;
-    color: var(--accent-color);
-    font-weight: bold;
-    transition: opacity 0.2s;
-}
-
-.back-menu:hover {
-    opacity: 0.7;
+    margin-top: 20px;
+    display: inline-block;
 }
