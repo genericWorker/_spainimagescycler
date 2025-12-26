@@ -1,7 +1,7 @@
 const slides = [
     {
         src: 'images/lighthouse.jpg',
-        url: 'http://www.spainisculture.com/en/propuestas_culturales/faros_de_galicia_los_guardianes_del_fin_del_mundo.html',
+        url: 'https://www.turismo.gal/que-facer/club-da-auga-de-galicia/ruta-dos-faros-de-galicia?langId=en_US#panel0',
         caption: 'Galicia Lighthouse'
     }, 
     {
@@ -26,7 +26,7 @@ const slides = [
         },
       {
         src: 'images/galiciaCoast.jpg',
-        url: 'https://www.travelawaits.com/2549962/places-to-explore-in-galicia-spain/',
+        url: 'https://www.turismo.gal/que-facer/rutas-turisticas/ruta-turistica-da-costa-da-morte?langId=en_US',
         caption: 'Galicia Coast'
         }
     ]; 

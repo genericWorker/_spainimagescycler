@@ -12,11 +12,11 @@ body {
 /* --- The Box (Card) --- */
 .calculator-card {
     background: #ffffff;
-    padding: 25px; /* Slightly reduced padding */
+    padding: 30px; 
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    width: 90%;
-    max-width: 650px; 
+    width: 95%;        /* Increased from 90% */
+    max-width: 1000px;  /* Increased significantly from 650px */
     text-align: center;
     border: 1px solid #ddd;
 }
