@@ -111,3 +111,11 @@ figure {
         padding: 15px;
     }
 }
+
+#footnote {
+    font-size: 0.85rem;    /* Makes the text smaller */
+    color: #666;           /* A grey color for a faded look */
+    margin-top: 10px;      /* Adds a little space above it */
+    font-style: italic;    /* Optional: helps distinguish it as a note */
+    text-align: center;    /* Centers it under the image */
+}
