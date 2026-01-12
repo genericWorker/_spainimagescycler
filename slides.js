@@ -21,7 +21,7 @@ const slides = [
     },
     {
         src: 'images/leon.jpg',
-        url: 'https://www.123rf.com/photo_17050812_countryside-of-burgos-castilla-y-leon-spain.html',
+        url: 'https://www.turismocastillayleon.com/',
         caption: 'Burgos, Castilla y Leon'
         },
       {
