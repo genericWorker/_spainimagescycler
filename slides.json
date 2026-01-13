@@ -1,0 +1,32 @@
+[
+  {
+    "src": "images/lighthouse.jpg",
+    "url": "https://www.turismo.gal/que-facer/club-da-auga-de-galicia/ruta-dos-faros-de-galicia?langId=en_US#panel0",
+    "caption": "Galicia Lighthouse"
+  },
+  {
+    "src": "images/asturiasHorreo.jpg",
+    "url": "https://en.wikipedia.org/wiki/H%C3%B3rreo",
+    "caption": "Asturias Horreo"
+  },
+  {
+    "src": "images/Picos-de-Europa-potes.jpg",
+    "url": "https://www.spainthisway.com/places/potes.php",
+    "caption": "Potes, Cantabria"
+  },
+  {
+    "src": "images/mogrovejo.jpg",
+    "url": "https://en.wikipedia.org/wiki/Mogrovejo",
+    "caption": "Mogrovejo, Cantabria"
+  },
+  {
+    "src": "images/leon.jpg",
+    "url": "https://www.turismocastillayleon.com/",
+    "caption": "Burgos, Castilla y Leon"
+  },
+  {
+    "src": "images/galiciaCoast.jpg",
+    "url": "https://www.turismo.gal/que-facer/rutas-turisticas/ruta-turistica-da-costa-da-morte?langId=en_US",
+    "caption": "Galicia Coast"
+  }
+]

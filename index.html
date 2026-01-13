@@ -1,26 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Visions of Spain</title>
     <link rel="stylesheet" href="imageCycle.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="slides.js"></script>
-    <script type="text/javascript" src="imageCycler.js"></script>
+    <!--  comment out to use jQuery version -->
+     <script type="text/javascript" src="imageCycler.js" defer></script> 
+     <!--  Uncomment to use jQuery version
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <script type="text/javascript" src="imageCyclerJquery.js" defer></script> 
+     -->
 </head>
 <body>
 
     <main class="calculator-card">
-    <h1>Visions of Spain</h1>
-    
-    <figure id="slideshow-container">
-        <a id="slide_link" href="">
-            <img id="slide_image" alt="Spain Vision">
-        </a>
-        <figcaption id="slide_text"></figcaption>
-    </figure>
-     <div id="footnote">Click on image for more information...</div>
-  </main>
+        <h1>Visions of Spain</h1>
+        
+        <figure id="slideshow-container">
+            <a id="slide_link" href="#">
+                <img id="slide_image" alt="Spain Vision">
+            </a>
+            <figcaption id="slide_text"></figcaption>
+        </figure>
+
+        <div id="footnote">
+            Click on image for more information...
+            <button id="btnToggle" class="control-btn">Pause</button>
+        </div>
+    </main>
 
 </body>
 </html>

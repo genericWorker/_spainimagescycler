@@ -15,8 +15,8 @@ body {
     padding: 30px; 
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    width: 95%;        /* Increased from 90% */
-    max-width: 1000px;  /* Increased significantly from 650px */
+    width: 95%;
+    max-width: 1000px;
     text-align: center;
     border: 1px solid #ddd;
 }
@@ -24,46 +24,20 @@ body {
 h1 {
     margin-top: 0;
     color: #37474f;
-    font-size: 1.4rem; /* Reduced from 1.8rem */
+    font-size: 1.4rem; 
     letter-spacing: 0.5px;
 }
 
 /* --- The Slideshow Container --- */
 figure {
-    margin: 15px 0 0 0;
+    margin: 15px auto;
     padding: 0;
-}
-
-/* --- Fixed Image Sizing --- */
-#slide_image {
-    width: 100%;       /* Responsive width */
-    max-width: 600px;  /* Cap at 600px */
-    height: 400px;     /* Fixed height for uniformity */
-    object-fit: cover; /* Prevents squishing */
-    border-radius: 4px;
     display: block;
-    margin: 0 auto;
-    background-color: #f8f9fa;
+    width: 100%;
+    max-width: 600px; /* Anchors everything to the image width */
 }
 
-/* --- Caption Styling --- */
-#slide_text {
-    margin-top: 12px;
-    font-weight: 600;
-    font-size: 1rem; /* Reduced from 1.25rem */
-    color: #455a64;
-    min-height: 1.4em;
-}
-
-/* --- Footer Link (If you add one) --- */
-.back-menu {
-    font-size: 0.85rem;
-    color: #78909c;
-    text-decoration: none;
-    margin-top: 20px;
-    display: inline-block;
-}
-
+/* --- Image Sizing & Snappy Transition --- */
 #slide_image {
     width: 100%;
     max-width: 600px;
@@ -72,50 +46,66 @@ figure {
     border-radius: 4px;
     display: block;
     margin: 0 auto;
-    
-    /* Software-style Dark Background */
-    background-color: #1a1a1b; 
+    background-color: #1a1b1c; 
     border: 1px solid #333;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    opacity: 1;
-    transition: opacity 0.8s ease-in-out; /* This is the missing link! */
-}
-
-#slide_image:hover {
-    transform: scale(1.02); /* Very subtle zoom */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: opacity 0.4s ease-in-out, transform 0.3s ease;
 }
 
 .fade-in {
-    animation: fadeIn 0.8s;
+    animation: fadeIn 0.4s ease-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0.4; }
+    from { opacity: 0; }
     to { opacity: 1; }
 }
 
+/* --- Caption Styling (The Pill) --- */
 #slide_text {
     display: inline-block;
     background: #f1f3f4;
-    padding: 4px 16px;
+    padding: 4px 20px;
     border-radius: 20px;
-    margin-top: 15px;
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #2c2c2c;
+    border: 1px solid #e0e0e0;
+}
+
+/* --- Footnote (Simplified centering) --- */
+#footnote {
+    font-size: 0.82rem;
+    color: #777;
+    margin-top: 12px;
+    font-style: italic;
+    text-align: center; /* Standard centering */
+}
+
+/* --- Pause Button (Distinctive Utility Look) --- */
+.control-btn {
+    display: block;       /* Put it on its own line */
+    margin: 10px auto 0;  /* Center it under the footnote text */
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    cursor: pointer;
+    background-color: #37474f; 
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rectangular to contrast the pill caption */
+    transition: background 0.2s;
+}
+
+.control-btn.paused {
+    background-color: #90a4ae;
 }
 
 @media (max-width: 600px) {
-    #slide_image {
-        height: 250px;
-    }
-    .calculator-card {
-        padding: 15px;
-    }
-}
-
-#footnote {
-    font-size: 0.85rem;    /* Makes the text smaller */
-    color: #666;           /* A grey color for a faded look */
-    margin-top: 10px;      /* Adds a little space above it */
-    font-style: italic;    /* Optional: helps distinguish it as a note */
-    text-align: center;    /* Centers it under the image */
+    #slide_image { height: 250px; }
 }

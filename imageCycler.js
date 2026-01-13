@@ -1,13 +1,77 @@
-window.onload = cycle;
+// 1. Shortcut for selecting elements
+const $ = (id) => document.getElementById(id);
 
+// 2. State variables
 let bnrCntr = 0;
+let slides = [];
+let timer;
+let isPaused = false;
 
-function openOffsetWindow(url) {
-    // Define dimensions
+/**
+ * Fetch slide data and initialize the cycle
+ */
+const loadSlides = async () => {
+    try {
+        const response = await fetch('slides.json');
+        if (!response.ok) throw new Error('Could not find slides.json');
+        
+        //  await will wait until all json is loaded
+        slides = await response.json();
+        
+        if (slides.length > 0) {
+            setupControls();
+            cycle();
+        }
+    } catch (error) {
+        console.error("Error loading slideshow:", error);
+        if ($('slide_text')) {
+            $('slide_text').innerHTML = "Gallery temporarily unavailable.";
+        }
+    }
+};
+
+/**
+ * Handles the Pause logic in one place
+ * Updates button text and stops the timer
+ */
+const pauseSlideshow = () => {
+    const btn = $('btnToggle');
+    isPaused = true;
+    if (btn) {
+        btn.innerHTML = "Continue";
+        btn.classList.add('paused');
+    }
+    clearTimeout(timer); 
+};
+
+/**
+ * Setup the Toggle Button listener
+ */
+const setupControls = () => {
+    const btn = $('btnToggle');
+    if (btn) {
+        btn.onclick = () => {
+            if (isPaused) {
+                isPaused = false;
+                btn.innerHTML = "Pause";
+                btn.classList.remove('paused');
+                cycle(); // Resume the loop
+            } else {
+                pauseSlideshow();
+            }
+        };
+    }
+};
+
+/**
+ * Opens the popup window and automatically pauses the slides
+ */
+const openOffsetWindow = (url) => {
+    // Prevent the slide from changing while user views the popup
+    pauseSlideshow();
+
     const width = 600;
     const height = 500;
-    
-    // Position it offset from the top-left of the user's screen
     const left = 150; 
     const top = 150;
 
@@ -16,48 +80,53 @@ function openOffsetWindow(url) {
         'SpainDetailWindow', 
         `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`
     );
-}
+};
 
-function cycle() {
-    // Determine the current slide
-    let currentSlide = slides[bnrCntr];
+/**
+ * Core animation and update logic
+ */
+const cycle = () => {
+    if (isPaused) return;
 
-    let slide_image = document.getElementById('slide_image');
-    let slide_text = document.getElementById('slide_text');
-    let slide_link = document.getElementById('slide_link');
+    const currentSlide = slides[bnrCntr];
+    const slide_image = $('slide_image');
+    const slide_text = $('slide_text');
+    const slide_link = $('slide_link');
 
-    // Update the DOM elements
-    slide_image.src = currentSlide.src;
-    slide_image.classList.remove("fade-in");
-    void slide_image.offsetWidth; // Trigger a reflow to restart animation
-    slide_image.classList.add("fade-in");
-    slide_text.innerHTML = currentSlide.caption;
-    slide_link.href = currentSlide.url;
-    
-    // Handle the clicking logic
-    if (currentSlide.url.length > 0) {
-        slide_image.style.cursor = 'pointer';
+    // Update Image & Trigger Snappy Fade
+    if (slide_image) {
+        slide_image.src = currentSlide.src;
+        slide_image.alt = currentSlide.caption;
         
-        // When clicked, call our offset window function instead of navigating
-        slide_image.onclick = function() {
-            openOffsetWindow(currentSlide.url);
-        };
-
-        // Also prevent the <a> tag from opening a new tab normally
-        slide_link.onclick = function(e) {
-            e.preventDefault();
-            openOffsetWindow(currentSlide.url);
-        };
-    } else {
-        slide_image.style.cursor = 'default';
-        slide_image.onclick = null;
+        // Restart CSS animation
+        slide_image.classList.remove("fade-in");
+        void slide_image.offsetWidth; // Force DOM reflow
+        slide_image.classList.add("fade-in");
+        
+        // Handle click on the image itself
+        slide_image.onclick = () => openOffsetWindow(currentSlide.url);
     }
 
-    // Increment counter for next time
-    bnrCntr = bnrCntr + 1;
-    if (bnrCntr == slides.length) {
-        bnrCntr = 0;
+    // Update Caption (The Pill)
+    if (slide_text) {
+        slide_text.innerHTML = currentSlide.caption;
     }
 
-    setTimeout(cycle, 3000);
-}
+    // Update Link wrapper
+    if (slide_link) {
+        slide_link.href = currentSlide.url;
+        slide_link.onclick = (e) => {
+            e.preventDefault(); 
+            openOffsetWindow(currentSlide.url);
+        };
+    }
+
+    // Loop logic
+    bnrCntr = (bnrCntr + 1) % slides.length;
+
+    // Standard 3-second delay
+    timer = setTimeout(cycle, 3000);
+};
+
+// Start the engine
+window.onload = loadSlides;
